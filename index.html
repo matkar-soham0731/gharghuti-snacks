@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>घरगुती परंपरागत उन्हाळी पदार्थ | संगमनेर</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--primary:#3E2723;
+--accent:#BF360C;
+--gold:#D7A86E;
+--light:#FDF6EC;
+--section:#FAEBD7;
+--text:#3E2723;
+--muted:#5D4037;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Noto Sans Devanagari', sans-serif;
+background:var(--light);
+color:var(--text);
+line-height:1.7;
+overflow-x:hidden;
+}
+
+/* SCROLL ANIMATION BASE */
+
+.reveal{
+opacity:0;
+transform:translateY(50px);
+transition:all 0.9s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* HERO */
+
+.hero{
+height:92vh;
+background:url('images/hero.jpg') center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+text-align:center;
+color:white;
+}
+
+.hero::after{
+content:'';
+position:absolute;
+width:100%;
+height:125%;
+background:linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.75));
+backdrop-filter: blur(2px);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:850px;
+}
+
+.hero h1{
+font-size:46px;
+margin-bottom:20px;
+font-weight:700;
+letter-spacing:1px;
+}
+
+.hero p{
+font-size:18px;
+margin-bottom:25px;
+opacity:0.95;
+}
+
+.badge{
+display:inline-block;
+background:var(--gold);
+color:#000;
+padding:6px 14px;
+border-radius:30px;
+font-size:14px;
+margin-bottom:20px;
+font-weight:600;
+}
+
+/* BUTTONS */
+
+.btn{
+display:inline-block;
+padding:14px 32px;
+margin:8px;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+transition:all 0.4s ease;
+}
+
+.btn-primary{
+background:var(--accent);
+color:white;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.btn-secondary{
+background:white;
+color:var(--primary);
+}
+
+.btn:hover{
+transform:translateY(-6px);
+}
+
+/* SECTION */
+
+.section{
+padding:100px 20px;
+max-width:1200px;
+margin:auto;
+text-align:center;
+}
+
+.section h2{
+font-size:34px;
+margin-bottom:50px;
+position:relative;
+}
+
+.section h2::after{
+content:'';
+width:80px;
+height:4px;
+background:var(--gold);
+display:block;
+margin:15px auto 0;
+border-radius:5px;
+}
+
+/* STORY */
+
+.story{
+background:var(--section);
+border-radius:25px;
+padding:60px 40px;
+margin-bottom:100px;
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* PRODUCTS */
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+}
+
+.card{
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 20px 45px rgba(0,0,0,0.08);
+transition:all 0.5s ease;
+}
+
+.card:hover{
+transform:translateY(-12px);
+box-shadow:0 30px 60px rgba(0,0,0,0.12);
+}
+
+.card img{
+width:100%;
+height:260px;
+object-fit:cover;
+transition:0.6s ease;
+}
+
+.card:hover img{
+transform:scale(1.1);
+}
+
+.card-content{
+padding:25px;
+}
+
+.card-content h3{
+margin-bottom:12px;
+font-size:22px;
+}
+
+.card-content p{
+font-size:14px;
+color:var(--muted);
+}
+
+.placeholder{
+height:260px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#f5e6d8,#e8d3c0);
+color:#6d4c41;
+font-weight:600;
+font-size:14px;
+text-align:center;
+padding:20px;
+}
+
+/* FEATURES */
+
+.features{
+background:var(--section);
+padding:80px 20px;
+margin-top:100px;
+border-radius:25px;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.feature-box{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 12px 30px rgba(0,0,0,0.06);
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+background:var(--section);
+padding:100px 20px;
+border-radius:25px;
+margin-top:100px;
+}
+
+.testimonial-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:35px;
+margin-top:60px;
+}
+
+.testimonial-card{
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 20px 45px rgba(0,0,0,0.07);
+transition:all 0.4s ease;
+}
+
+.testimonial-card:hover{
+transform:translateY(-8px);
+box-shadow:0 30px 60px rgba(0,0,0,0.12);
+}
+
+.testimonial-header{
+display:flex;
+align-items:center;
+gap:18px;
+margin-bottom:20px;
+}
+
+.testimonial-header img{
+width:70px;
+height:70px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid var(--gold);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.customer-info{
+display:flex;
+flex-direction:column;
+}
+
+.customer-name{
+font-weight:700;
+font-size:16px;
+color:var(--primary);
+}
+
+.customer-location{
+font-size:13px;
+color:var(--muted);
+margin-bottom:6px;
+}
+
+.stars{
+color:#FBC02D;
+font-size:14px;
+letter-spacing:2px;
+}
+
+.testimonial-text{
+font-size:15px;
+color:var(--muted);
+line-height:1.6;
+margin-top:10px;
+}
+
+/* TESTIMONIAL TITLE */
+
+.testimonial-title{
+text-align:center;
+margin-bottom:20px;
+}
+
+.testimonial-count{
+display:inline-block;
+background:linear-gradient(135deg,var(--gold),var(--accent));
+color:white;
+padding:6px 18px;
+border-radius:30px;
+font-size:14px;
+font-weight:600;
+margin-bottom:10px;
+box-shadow:0 6px 15px rgba(0,0,0,0.15);
+letter-spacing:0.5px;
+}
+/* BULK */
+
+.bulk{
+margin-top:100px;
+background:linear-gradient(135deg,var(--primary),#2e1c18);
+color:white;
+padding:70px 30px;
+border-radius:25px;
+}
+
+/* FOOTER */
+
+/* FOOTER UPGRADE */
+
+.footer{
+margin-top:120px;
+background:linear-gradient(135deg,#2e1c18,#3E2723);
+color:white;
+padding:70px 20px 30px;
+}
+
+.footer-container{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+flex-wrap:wrap;
+gap:40px;
+}
+
+.footer-left h3{
+margin-bottom:10px;
+font-size:20px;
+color:var(--gold);
+}
+
+.footer-left p{
+color:#d7c2b8;
+font-size:14px;
+}
+
+.footer-right p{
+margin-bottom:8px;
+font-size:14px;
+}
+
+.footer-right a{
+color:white;
+text-decoration:none;
+}
+
+.footer-right a:hover{
+color:var(--gold);
+}
+
+.footer-whatsapp{
+display:inline-block;
+margin-top:12px;
+padding:8px 18px;
+background:var(--accent);
+border-radius:30px;
+font-size:13px;
+transition:0.3s;
+}
+
+.footer-whatsapp:hover{
+background:var(--gold);
+color:black;
+}
+
+.footer-bottom{
+margin-top:40px;
+text-align:center;
+font-size:13px;
+color:#c5a89e;
+border-top:1px solid rgba(255,255,255,0.15);
+padding-top:20px;
+}
+
+.ortus-credit{
+display:block;
+margin-top:8px;
+font-size:12px;
+color:#c5a89e;
+}
+
+.ortus-credit a{
+color:var(--gold);
+text-decoration:none;
+font-weight:600;
+}
+
+.ortus-credit a:hover{
+color:white;
+}
+
+/* Responsive Footer */
+
+@media(max-width:768px){
+.footer-container{
+flex-direction:column;
+text-align:center;
+align-items:center;
+}
+}
+/* FLOAT */
+
+.float{
+position:fixed;
+width:65px;
+height:65px;
+bottom:30px;
+right:30px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 15px 30px rgba(0,0,0,0.3);
+transition:all 0.4s ease;
+z-index:1000;
+}
+
+.float svg{
+width:32px;
+height:32px;
+}
+
+.float:hover{
+transform:scale(1.1);
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+.hero h1{font-size:30px;}
+.section{padding:70px 15px;}
+}
+
+/* BEST SELLER BADGE */
+
+.best-badge{
+position:absolute;
+top:18px;
+left:18px;
+background:linear-gradient(135deg,#D7A86E,#BF360C);
+color:white;
+padding:6px 14px;
+font-size:12px;
+font-weight:600;
+border-radius:30px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+z-index:5;
+letter-spacing:0.5px;
+}
+
+
+/* Make card relative so badge positions correctly */
+
+.card{
+position:relative;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<div class="hero-content">
+
+<h1>घरगुती परंपरागत उन्हाळी पदार्थ</h1>
+<p>हाताने बनवलेले | पारंपरिक पद्धत | नैसर्गिकरित्या उन्हात वाळवलेले</p>
+<p><strong>संगमनेरमध्ये उपलब्ध</strong></p>
+
+<a class="btn btn-primary" href="https://wa.me/919309967150?text=नमस्कार,%20मला%20तुमच्या%20घरगुती%20पदार्थांविषयी%20माहिती%20हवी%20आहे.">📲 WhatsApp वर संपर्क</a>
+<a class="btn btn-secondary" href="tel:9309967150">📞 कॉल करा</a>
+
+<div class="contact-hint">
+संपर्कासाठी वरील बटण वापरा
+</div>
+
+<div class="scroll-indicator">
+<span></span>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+
+<div class="story reveal">
+<h2>परंपरेची चव, विश्वासाची हमी</h2>
+<p>प्रत्येक पदार्थ घरगुती पद्धतीने, स्वच्छतेने आणि प्रेमाने तयार केला जातो. परंपरा आणि गुणवत्ता यांचा संगम म्हणजे आमचे उन्हाळी पदार्थ.</p>
+</div>
+
+<h2 class="reveal">उपलब्ध पदार्थ</h2>
+
+<div class="products">
+
+<div class="card reveal">
+<div class="best-badge">BEST SELLER🔥</div>
+<img src="images/kurdai.png">
+<div class="card-content">
+<h3>कुरडई</h3>
+<p>सूर्यप्रकाशात वाळवलेले पारंपरिक उत्पादन</p>
+</div>
+</div>
+
+<div class="card reveal">
+<img src="images/tandul.png">
+<div class="card-content">
+<h3>तांदूळ पापड</h3>
+<p>हलके आणि शुद्ध</p>
+</div>
+</div>
+
+<div class="card reveal">
+<div class="best-badge">BEST SELLER🔥</div>
+<img src="images/nagli.png">
+<div class="card-content">
+<h3>नागली पापड</h3>
+<p>आरोग्यदायी व पौष्टिक</p>
+</div>
+</div>
+
+<div class="card reveal">
+<img src="images/mugvade.png">
+<div class="card-content">
+<h3>मुग वडे</h3>
+<p>पारंपरिक उन्हाळी पदार्थ</p>
+</div>
+</div>
+
+<div class="card reveal">
+<div class="best-badge">BEST SELLER🔥</div>
+<img src="images/batata.png">
+<div class="card-content">
+<h3>बटाटा पापड</h3>
+<p>घरच्या चवीचा कुरकुरीत आनंद<br>खास उपवासासाठी </p>
+</div>
+</div>
+
+<div class="card reveal">
+<img src="images/sabudana.png">
+<div class="card-content">
+<h3>शाबुदाणा पापड</h3>
+<p>उपवासासाठी खास</p>
+</div>
+</div>
+
+<div class="card reveal">
+<img src="images/shevai.png">
+<div class="card-content">
+<h3>रवा शेवई</h3>
+<p>पारंपरिक स्वाद</p>
+</div>
+</div>
+
+</div>
+
+<div class="features reveal">
+<h2>आमची वैशिष्ट्ये</h2>
+<div class="feature-grid">
+<div class="feature-box">✔ पूर्णपणे घरगुती उत्पादन</div>
+<div class="feature-box">✔ पारंपरिक पद्धतीने तयार</div>
+<div class="feature-box">✔ नैसर्गिक सूर्यप्रकाशात वाळवलेले</div>
+<div class="feature-box">✔ कोणतेही प्रिझर्व्हेटिव्ह नाहीत</div>
+</div>
+</div>
+
+<!-- TESTIMONIALS SECTION -->
+
+<section class="section testimonials reveal">
+
+<div class="testimonial-title">
+<p class="testimonial-count">100+ समाधानी ग्राहक</p>
+<h2>ग्राहकांचे अभिप्राय</h2>
+</div>
+
+<div class="testimonial-grid">
+
+<div class="testimonial-card">
+
+<div class="testimonial-header">
+<img src="images/customer2.jpg" alt="ग्राहक">
+<div class="customer-info">
+<p class="customer-name">अनुजा बिंगले</p>
+<p class="customer-location">पुणे</p>
+<div class="stars">
+★★★★★
+</div>
+</div>
+</div>
+<p class="testimonial-text">
+“वेबसाईट पाहून उपवासाच्या पापड घेतल्या, काय सांगू माझ्या घरच्यांना खूप आवडल्या. विशेष म्हणजे गावाकडे बनवलेलं असल्याने खरंच गावाकडचा feel आला.”
+</p>
+
+</div>
+
+<div class="testimonial-card">
+
+<div class="testimonial-header">
+<img src="images/customer1.jpg" alt="ग्राहक">
+<div class="customer-info">
+<p class="customer-name">सोनल वाडगे</p>
+<p class="customer-location">अकोले</p>
+<div class="stars">
+★★★★★
+</div>
+</div>
+</div>
+
+<p class="testimonial-text">
+
+</p>
+“कुरडई तळताना मस्त फुलते आणि एकदम कुरकुरीत लागते. आमच्या ह्यांना कुरडई आवडतंच नव्हती, पण रोहिणी ताईंनी बनवलेली कुरडईची चव घेतल्यावर रोजच्या जेवणातही कुरडईच मागतात.”
+
+</div>
+
+<div class="testimonial-card">
+
+
+<div class="testimonial-header">
+<img src="images/customer3.jpeg" alt="ग्राहक">
+<div class="customer-info">
+<p class="customer-name">मीना मतकर</p>
+<p class="customer-location">निमज, संगमनेर</p>
+<div class="stars">
+★★★★★
+</div>
+</div>
+</div>
+<p class="testimonial-text">
+“माझ्या मुली तर मस्त यम्मी यम्मी म्हणून खातात. त्यामुळे जरा जास्तच घेते.”
+</p>
+
+</div>
+
+<div class="testimonial-card">
+
+<div class="testimonial-header">
+<img src="images/customer4.jpeg" alt="ग्राहक">
+<div class="customer-info">
+<p class="customer-name">उषा ओहोळ</p>
+<p class="customer-location">भगूर, नाशिक</p>
+<div class="stars">
+★★★★★
+</div>
+</div>
+</div>
+<p class="testimonial-text">
+“मी तर मागच्या वर्षी लोकमतची बातमी पाहून खरेदी करायला लागले..., आताही सगळ्या प्रकारचे पापड घेतले. खरंच मस्त आहे.“
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="bulk reveal">
+<h2>मोठ्या ऑर्डरसाठी विशेष व्यवस्था उपलब्ध</h2>
+<p>ऑर्डरच्या प्रमाणानुसार डिलिव्हरी सुविधा</p>
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-left">
+<h3>घरगुती परंपरागत उन्हाळी पदार्थ</h3>
+<p>परंपरेची चव • गुणवत्ता • विश्वास</p>
+</div>
+
+<div class="footer-right">
+<p><strong>संपर्क:</strong></p>
+<p>रोहिणी अमोल मतकर</p>
+<p><a href="tel:9309967150">+91 9309967150</a></p>
+<p>संगमनेर</p>
+
+<a href="https://wa.me/919309967150" target="_blank" class="footer-whatsapp">
+WhatsApp वर संपर्क
+</a>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2024 घरगुती परंपरागत उन्हाळी पदार्थ | सर्व हक्क राखीव <br>
+<span class="ortus-credit">
+Digital Partner: <a href="#" target="_blank">ORTUS CO.</a>
+</span>
+</div>
+
+</footer>
+
+<a href="https://wa.me/919309967150" class="float" target="_blank">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<path fill="white" d="M16 .4C7.5.4.7 7.2.7 15.7c0 2.8.7 5.4 2.1 7.7L.4 31.6l8.4-2.2c2.2 1.2 4.7 1.8 7.2 1.8 8.5 0 15.3-6.8 15.3-15.3S24.5.4 16 .4zm0 27.8c-2.2 0-4.4-.6-6.3-1.7l-.4-.2-5 1.3 1.3-4.8-.3-.5c-1.3-2-1.9-4.2-1.9-6.6C3.4 8.5 9 2.9 16 2.9S28.6 8.5 28.6 15.7 23 28.2 16 28.2zm6.8-9.3c-.4-.2-2.5-1.2-2.8-1.3-.4-.2-.7-.2-1 .2s-1.1 1.3-1.4 1.6c-.3.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.2-2.2-2.6-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.5-.7.2-.3.1-.6 0-.8-.1-.2-1-2.4-1.4-3.3-.3-.8-.7-.7-1-.7h-.9c-.3 0-.8.1-1.2.6-.4.4-1.6 1.6-1.6 3.8s1.6 4.3 1.8 4.6c.2.3 3.1 4.8 7.5 6.7 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.5-1 2.9-2 .4-1 .4-1.8.3-2-.1-.2-.3-.3-.7-.5z"/>
+</svg>
+</a>
+
+<script>
+window.addEventListener('scroll', function(){
+const reveals = document.querySelectorAll('.reveal');
+for(let i=0;i<reveals.length;i++){
+let windowHeight = window.innerHeight;
+let elementTop = reveals[i].getBoundingClientRect().top;
+let elementVisible = 100;
+if(elementTop < windowHeight - elementVisible){
+reveals[i].classList.add('active');
+}
+}
+});
+</script>
+
+</body>
+</html>
